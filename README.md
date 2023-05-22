@@ -1,2 +1,2 @@
 # Wordpress-Terkon-atK8s-inAzure
-WordPress and Tetkon in Azure at K8S
+WordPress and Tetkon at K8S in Azure 
