@@ -47,6 +47,7 @@ spec:
         name: kubernetes-actions
       runAfter:
         - build-push-image
+      params:
         - name: action
           value: apply
         - name: manifest
