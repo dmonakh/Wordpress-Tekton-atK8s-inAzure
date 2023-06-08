@@ -48,8 +48,7 @@ spec:
       runAfter:
         - build-push-image
       params:
-        - name: action
-          value: apply -f
-        - name: manifest
-          value: "$(workspaces.source.path)/terraform-azure/Deploy.yml" 
+      - name: script
+        value: |
+          kubectl apply -f $(workspaces.source.path)/terraform-azure/Deploy.yml
             
