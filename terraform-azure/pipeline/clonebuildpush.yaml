@@ -50,5 +50,5 @@ spec:
       params:
       - name: script
         value: |
-          kubectl apply -f $(workspaces.source.metadata.path)/terraform-azure/Deploy.yml
+          kubectl apply -f ./terraform-azure/Deploy.yml
             
