@@ -107,7 +107,7 @@ jobs:
         git commit --allow-empty -m "Empty commit"
         git push
 
-    - name: Wait for 180 seconds()
+    - name: Wait for 240 seconds()
       run: sleep 180s
 
     - name: Check Service
