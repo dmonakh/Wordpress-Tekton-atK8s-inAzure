@@ -24,6 +24,11 @@ kubectl apply --filename https://storage.googleapis.com/tekton-releases/triggers
 echo "6 ----- >Install Tekton Operators"
 kubectl apply -f https://storage.googleapis.com/tekton-releases/operator/latest/release.yaml
 
+# Install Ingress-nginx
+echo "7 ----- >Install Ingress-nginx"
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.0/deploy/static/provider/cloud/deploy.yaml
+
+
 cat > regsecret.yaml << EOM
 kind: Secret
 apiVersion: v1
@@ -47,4 +52,3 @@ kubectl apply -f tekton/
 
 kubectl create rolebinding pipeline-pvc --clusterrole=edit --serviceaccount=default:pipeline --namespace=default
 kubectl create clusterrolebinding pipeline-admin --clusterrole=cluster-admin --serviceaccount=default:pipeline
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.0/deploy/static/provider/cloud/deploy.yaml
