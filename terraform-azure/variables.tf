@@ -16,7 +16,7 @@ default = "AKSMondy2022"
 variable "kubernetes_version" {
 type = string
 description = "Kubernetes version"
-default = "1.25.8"
+default = "1.26.0"
 }
 variable "system_node_count" {
 type = number
