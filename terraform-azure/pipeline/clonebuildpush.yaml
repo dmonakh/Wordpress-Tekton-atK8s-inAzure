@@ -10,7 +10,7 @@ spec:
     - name: TAG
     - name: DOCKERFILE
       description: Path to the Dockerfile to build.
-      default: ./terraform_gcp/Dockerfile
+      default: ./terraform-azure/Dockerfile
   workspaces:
     - name: workspace
   tasks:
@@ -41,7 +41,7 @@ spec:
         - name: FORMAT
           value: "docker"
         - name: CONTEXT
-          value: "$(workspaces.source.path)/terraform_gcp" 
+          value: "$(workspaces.source.path)/terraform-azure" 
     - name: kubectl-run
       taskRef:
         name: kubernetes-actions
@@ -50,5 +50,5 @@ spec:
         - name: action
           value: apply
         - name: manifest
-          value: "$(workspaces.source.path)/terraform_gcp/Deploy.yml" 
+          value: "$(workspaces.source.path)/terraform-azure/Deploy.yml" 
             

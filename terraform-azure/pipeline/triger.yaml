@@ -30,7 +30,7 @@ spec:
           - name: revision
             value: main
           - name: gitrepositoryurl
-            value: "https://github.com/dmonakh/Wordpress-Tekton-atK8s-inGCP"
+            value: "https://github.com/dmonakh/Wordpress-Tekton-atK8s-inAzure"
           - name: IMAGE
             value: "docker.io/dmonakh/init_db_wp"
           - name: TAG

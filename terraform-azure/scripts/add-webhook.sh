@@ -2,7 +2,7 @@
 #!/bin/bash
 
 external_ip="$1"
-REPO="dmonakh/Wordpress-Tekton-atK8s-inGCP"
+REPO="dmonakh/Wordpress-Tekton-atK8s-inAzure"
 WEBHOOK_URL="http://$external_ip/hooks"
 
 response=$(gh api repos/$REPO/hooks)
