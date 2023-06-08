@@ -90,7 +90,7 @@ jobs:
     - name: Create Webhook
       if: contains(github.event.head_commit.message, 'init')
       env:
-        SCRIPT_DIR: ${{ github.workspace }}/terraform_azure/scripts
+        SCRIPT_DIR: ${{ github.workspace }}/terraform-azure/scripts
       run: |
         external_ip=$(kubectl get svc ingress-nginx-controller -n ingress-nginx  -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
         echo "External IP: $external_ip"
