@@ -80,7 +80,7 @@ jobs:
       env:
         DOCKER_USERNAME : ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD : ${{ secrets.DOCKER_PASSWORD }}
-        SCRIPT_DIR: ${{ github.workspace }}/terraform_gcp/scripts
+        SCRIPT_DIR: ${{ github.workspace }}/terraform-azure/scripts
       run: bash  $SCRIPT_DIR/install-tekton.sh
 
     - name: Wait for 60 seconds()
@@ -90,7 +90,7 @@ jobs:
     - name: Create Webhook
       if: contains(github.event.head_commit.message, 'init')
       env:
-        SCRIPT_DIR: ${{ github.workspace }}/terraform_gcp/scripts
+        SCRIPT_DIR: ${{ github.workspace }}/terraform_azure/scripts
       run: |
         external_ip=$(kubectl get svc ingress-nginx-controller -n ingress-nginx  -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
         echo "External IP: $external_ip"
