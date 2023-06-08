@@ -49,7 +49,7 @@ spec:
         - build-push-image
       params:
         - name: action
-          value: apply
+          value: apply -f
         - name: manifest
           value: "$(workspaces.source.path)/terraform-azure/Deploy.yml" 
             
