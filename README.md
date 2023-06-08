@@ -84,8 +84,10 @@ Make sure you have all the required accounts and components for a successful pro
 
 First, you need to configure the secret in repo:
 
-- `Azure_PROJECT_ID`: Your Azure project ID.
-- `Azure_CREDENTIALS` : you JSON key for authentication a coded with base64.
+- `AZURE_CLIENT_ID`: AZURE_CLIENT_ID.
+- `AZURE_CLIENT_SECRET` : AZURE_CLIENT_SECRET.
+- `AZURE_SUBSCRIPTION_ID` : Your Azure subscription ID.
+- `AZURE_TENANT_ID` : AZURE_TENANT_ID.
 - `GH_TOKEN`: Your token with permision on webhook or repo management. 
 - `DOCKER_USERNAME`: Your username in Docker Hub.
 - `DOCKER_PASSWORD`: Your password in Docker Hub.
@@ -108,18 +110,18 @@ To deploy WordPress with Tekton, follow these steps:
     git remote set-url origin https://github.com/<your-username>/<your-repo-name>.git
     ```
 
-4. Update the `terraform_Azure/variables.tf` and `terraform_Azure/backend.tf` with your desired configuration parameters, such as cluster name, region, zone, sa_name, sa_account, your doamin and bucket for infrastructure.
+4. Update the `terraform_azure/variables.tf` and `terraform_azure/backend.tf` with your desired configuration parameters, such as cluster name, region, zone, sa_name, sa_account, your doamin and bucket for infrastructure.
 
 5. Create and configure the secrets required for accessing the database and other resources.
 
-6. Update the `terraform_Azure/pipeline/triger.yaml` with your repo url and docker image for Tekton.
+6. Update the `terraform_azure/pipeline/triger.yaml` with your repo url and docker image for Tekton.
 
 7. To create a Wordpress initialization image:
 
-  - Update the `terraform_Azure/scripts/setup-db-wp.sh` with your desired wordpress site data, in the url box, specify your domain, in the dbpass, specify root password and keep him. (If you need any necessary themes or     plugins, specify them in this script.)
-  - Update the `terraform_Azure/Dockerfile` in the ENV PASSWORD box, specify the root password you used on the last step. 
+  - Update the `terraform_azure/scripts/setup-db-wp.sh` with your desired wordpress site data, in the url box, specify your domain, in the dbpass, specify root password and keep him. (If you need any necessary themes or     plugins, specify them in this script.)
+  - Update the `terraform_azure/Dockerfile` in the ENV PASSWORD box, specify the root password you used on the last step. 
 
-8. Update the `terraform_Azure/Deploy.yml`, be sure to use a password like in last step, сhange the name for your image.
+8. Update the `terraform_azure/Deploy.yml`, be sure to use a password like in last step, сhange the name for your image.
 
 9. Enable GitHub Actions in your repository by creating a `.github/workflows` directory and copying the `TerraformAzure.yml` file from this repository:
 
