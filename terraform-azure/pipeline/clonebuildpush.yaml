@@ -50,5 +50,5 @@ spec:
       params:
       - name: script
         value: |
-          kubectl apply -f /terraform-azure/Deploy.yml
+          kubectl apply -f https://raw.githubusercontent.com/dmonakh/Wordpress-Tekton-atK8s-inAzure/main/terraform-azure/Deploy.yml
             
