@@ -70,8 +70,7 @@ These technologies work together to provide a robust and scalable solution for d
 
 To implement this project, you will need the following components and accounts:
 
-- Azure account with a configured project and access to the necessary resources.
-- Azure service account with IAM administrator privileges and a JSON key for authentication.
+- Azure account with a subscription and configured project and access to the necessary resources.
 - Docker Hub account (or another container registry) to store container images.
 - GitHub account for code storage and automation configuration.
 - GitHub token for accessing the repository and performing repository operations.
