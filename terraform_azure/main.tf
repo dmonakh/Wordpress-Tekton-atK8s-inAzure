@@ -28,3 +28,4 @@ resource "azurerm_dns_zone" "example" {
   name                = var.domain
   resource_group_name = azurerm_resource_group.aks-rg.name
 }
+
