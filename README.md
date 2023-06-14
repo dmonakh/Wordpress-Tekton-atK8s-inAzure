@@ -70,11 +70,9 @@ These technologies work together to provide a robust and scalable solution for d
 
 To implement this project, you will need the following components and accounts:
 
-<<<<<<< HEAD
+
 - Azure account with a configured Subscription and Application
-=======
 - Azure account with a subscription and configured project and access to the necessary resources.
->>>>>>> ceefe308017fdb476334a1c35dc477d5800a0ecb
 - Docker Hub account (or another container registry) to store container images.
 - GitHub account for code storage and automation configuration.
 - Domain registered with a domain registrar (e.g., Cloudflare) for DNS configuration.
@@ -146,13 +144,13 @@ After deploying the infrastructure using Terraform and GitHub Actions, you wait 
 After step `Create empty commit` the tekton pipeline will automatically create and configure the necessary resources for deploying WordPress in your Azure project. 
 You can track the progress of the pipeline execution through the Tekton dashboard or the command line.  
 
-Optional:
+### Optional:
 
 Run: ``` kubectl --namespace tekton-pipelines port-forward svc/tekton-dashboard 9097:9097 ```
 
 Open: [Tekton Dashboard](http://127.0.0.1:9097/#/namespaces/default/pipelineruns) for reviewing the pipeline run.
 
-Сonclusion: 
+### Сonclusion: 
 
 If step `Check Service` in GitHub Action shows an external IP for WordPress and the link works, well done! 
 (Note: You can open this ip in your browser and get your site. But the display of the site will not be correct until you connect the domain)
