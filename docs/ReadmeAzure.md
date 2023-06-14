@@ -11,7 +11,7 @@
 
 To implement this project, you will need the following components and accounts:
 
-- Azure account with a configured Subscription and Application
+- Azure account with a configured Subscription and Application.
 - Docker Hub account (or another container registry) to store container images.
 - GitHub account for code storage and automation configuration.
 - Domain registered with a domain registrar (e.g., Cloudflare) for DNS configuration.
