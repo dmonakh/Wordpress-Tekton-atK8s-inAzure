@@ -24,8 +24,7 @@ resource "local_file" "kubeconfig" {
   filename = "${path.module}/kubeconfig"
   content  = azurerm_kubernetes_cluster.aks.kube_config_raw
 }
-resource "azurerm_dns_zone" "example" {
+resource "azurerm_dns_zone" "dns" {
   name                = var.domain
   resource_group_name = azurerm_resource_group.aks-rg.name
 }
-
