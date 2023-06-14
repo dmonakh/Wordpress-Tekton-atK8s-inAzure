@@ -33,7 +33,7 @@
 - [About](#about)
   - [Built With](#built-with)
 - [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
+  - [Prequirements](#prequirements)
   - [Configuration](#configuration)
   - [Installation](#installation)
 - [Usage](#usage)
@@ -58,7 +58,7 @@ The project is built using the following technologies:
 
 - [Tekton](https://tekton.dev/): A Kubernetes-native open-source framework for creating continuous integration and delivery (CI/CD) systems.
 - [Kubernetes](https://kubernetes.io/): An open-source container orchestration platform for automating the deployment, scaling, and management of containerized applications.
-- [Google Cloud Platform (Azure)](https://cloud.google.com/): A suite of cloud computing services provided by Google, including compute, storage, networking, and more.
+- [Microsoft Azure](https://azure.microsoft.com/): A suite of cloud computing services provided by Google, including compute, storage, networking, and more.
 - [WordPress](https://wordpress.org/): A popular open-source content management system (CMS) for creating websites and blogs.
 - [Terraform](https://www.terraform.io/): An open-source infrastructure as code software tool that enables you to define and provision infrastructure resources using declarative configuration files.
 - [Docker](https://www.docker.com/): An open-source platform that allows you to automate the deployment, scaling, and management of applications using containerization.
@@ -70,13 +70,10 @@ These technologies work together to provide a robust and scalable solution for d
 
 To implement this project, you will need the following components and accounts:
 
-- Azure account with a configured project and access to the necessary resources.
-- Azure service account with IAM administrator privileges and a JSON key for authentication.
+- Azure account with a configured Subscription and Application
 - Docker Hub account (or another container registry) to store container images.
 - GitHub account for code storage and automation configuration.
-- GitHub token for accessing the repository and performing repository operations.
 - Domain registered with a domain registrar (e.g., Cloudflare) for DNS configuration.
-- Enable `Read and write permission` in General setting Action in Repo
 
 Make sure you have all the required accounts and components for a successful project implementation.
 
@@ -88,9 +85,10 @@ First, you need to configure the secret in repo:
 - `AZURE_CLIENT_SECRET` : AZURE_CLIENT_SECRET.
 - `AZURE_SUBSCRIPTION_ID` : Your Azure subscription ID.
 - `AZURE_TENANT_ID` : AZURE_TENANT_ID.
-- `GH_TOKEN`: Your token with permision on webhook or repo management. 
+- `GH_TOKEN`: Your token with permission on webhook or repo management. ([To create a token, use](https://github.com/settings/tokens))
 - `DOCKER_USERNAME`: Your username in Docker Hub.
 - `DOCKER_PASSWORD`: Your password in Docker Hub.
+
 Make sure the specified parameters align with your environment and requirements.
 ### Installation
 
@@ -102,7 +100,7 @@ To deploy WordPress with Tekton, follow these steps:
     git clone https://github.com/dmonakh/Wordpress-Tekton-atK8s-inAzure.git
     ```
 
-2. Create a new repository on your GitHub account.
+2. Create a new repository on your GitHub account and enable `Read and write permission` in General setting Action in Repo. Check that there is no webhook in the repo, if there is remove.
 
 3. Set up a remote repository for your local repository:
 
@@ -110,11 +108,11 @@ To deploy WordPress with Tekton, follow these steps:
     git remote set-url origin https://github.com/<your-username>/<your-repo-name>.git
     ```
 
-4. Update the `terraform_azure/variables.tf` and `terraform_azure/backend.tf` with your desired configuration parameters, such as cluster name, region, zone, sa_name, sa_account, your doamin and bucket for infrastructure.
+4. Update the `terraform_azure/variables.tf`, `terraform_azure/providers.tf` and `terraform_azure/scripts/create_storage.sh` with your desired configuration parameters, such as resource group name, location, cluster name, your doamin, and storage account name.
 
 5. Create and configure the secrets required for accessing the database and other resources.
 
-6. Update the `terraform_azure/pipeline/triger.yaml` with your repo url and docker image for Tekton.
+6. Update the `terraform_azure/pipeline/triger.yaml` with your repo url and docker image for Tekton, or `terraform_azure/pipeline/clonebuildpush.yaml` with your repo raw.
 
 7. To create a Wordpress initialization image:
 
@@ -131,13 +129,11 @@ To deploy WordPress with Tekton, follow these steps:
     ```
 10. Update the `.github/workflows/TerraformAzure.yml` with your env.
 
-12. Enable `Read and write permission` in General setting Action in Repo
+11. Commit `init` and push all the changes to the repository.
 
-13. Commit `init` and push all the changes to the repository.
+12. GitHub Actions will automatically trigger the pipeline to deploy the infrastructure in GCP.
 
-14. GitHub Actions will automatically trigger the pipeline to deploy the infrastructure in Azure.
-
-15. Wait for the pipeline to complete successfully to ensure the infrastructure is created successfully.
+13. Wait for the pipeline to complete successfully to ensure the infrastructure is created successfully.
 
 ## Usage
 
@@ -146,9 +142,13 @@ After deploying the infrastructure using Terraform and GitHub Actions, you wait 
 After step `Create empty commit` the tekton pipeline will automatically create and configure the necessary resources for deploying WordPress in your Azure project. 
 You can track the progress of the pipeline execution through the Tekton dashboard or the command line.  
 
+Optional:
+
 Run: ``` kubectl --namespace tekton-pipelines port-forward svc/tekton-dashboard 9097:9097 ```
 
 Open: [Tekton Dashboard](http://127.0.0.1:9097/#/namespaces/default/pipelineruns) for reviewing the pipeline run.
+
+Сonclusion: 
 
 If step `Check Service` in GitHub Action shows an external IP for WordPress and the link works, well done! 
 (Note: You can open this ip in your browser and get your site. But the display of the site will not be correct until you connect the domain)

@@ -13,10 +13,12 @@ echo "3 ----- >Install Tekton Dashboard"
 kubectl apply --filename https://storage.googleapis.com/tekton-releases/dashboard/latest/release.yaml
 
 # Install tasks from Tekton Hub
+sleep 30
 echo "4 ----- >Install tasks from Tekton Hub"
-tkn hub install task git-clone && tkn hub install task buildah && tkn hub install task kubernetes-actions && sleep 10
+tkn hub install task git-clone && tkn hub install task buildah && tkn hub install task kubernetes-actions 
 
 # Install Tekton Triggers
+sleep 30
 echo "5 ----- >Install Tekton Triggers"
 kubectl apply --filename https://storage.googleapis.com/tekton-releases/triggers/latest/release.yaml
 
@@ -48,3 +50,4 @@ kubectl apply -f tekton/
 kubectl create rolebinding pipeline-pvc --clusterrole=edit --serviceaccount=default:pipeline --namespace=default
 kubectl create clusterrolebinding pipeline-admin --clusterrole=cluster-admin --serviceaccount=default:pipeline
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.0/deploy/static/provider/cloud/deploy.yaml
+
