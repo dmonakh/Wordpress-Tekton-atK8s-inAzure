@@ -1,8 +1,8 @@
 <summary>Table of Contents</summary>
 
-  - [Prequirements](#prequirements)
-  - [Configuration](#configuration)
-  - [Installation](#installation)
+- [Prequirements](#prequirements)
+- [Configuration](#configuration)
+- [Installation](#installation)
 
 </details>
 
