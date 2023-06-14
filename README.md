@@ -70,7 +70,11 @@ These technologies work together to provide a robust and scalable solution for d
 
 To implement this project, you will need the following components and accounts:
 
+<<<<<<< HEAD
 - Azure account with a configured Subscription and Application
+=======
+- Azure account with a subscription and configured project and access to the necessary resources.
+>>>>>>> ceefe308017fdb476334a1c35dc477d5800a0ecb
 - Docker Hub account (or another container registry) to store container images.
 - GitHub account for code storage and automation configuration.
 - Domain registered with a domain registrar (e.g., Cloudflare) for DNS configuration.
